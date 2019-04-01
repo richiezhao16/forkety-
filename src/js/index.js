@@ -33,3 +33,13 @@ elements.searchForm.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch();
 })
+
+elements.searchPagButton.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-inline');
+    if (btn){
+        const goToPage = parseInt(btn.dataset.goto, 10);
+        searchView.cleanList();
+        searchView.renderResults(state.search.result, goToPage);        
+    }
+})
+ 

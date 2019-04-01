@@ -8,6 +8,7 @@ export const cleanInputField = () => {
 
 export const cleanList = () => {
     elements.searchResultList.innerHTML = '';
+    elements.searchPagButton.innerHTML = '';
 };
 
 
@@ -44,13 +45,13 @@ const renderRecipe = recipe => {
 };
 
 const creatButton = (page, type) => `
-    <button class="btn-inline results__btn--${type}">
+    <button class="btn-inline results__btn--${type}" data-goto = ${type === 'pre' ? page - 1 : page + 1 }>
         <svg class="search__icon">
             <use href="img/icons.svg#icon-triangle-${type === 'pre' ? 'left' : 'right'}"></use>
         </svg>
         <span>Page ${type === 'pre' ? page - 1 : page + 1 }</span>
     </button>
-`
+`;
 
 
 const renderButtton = (curPage, nunberOfRes, resPerPage) => {
@@ -71,6 +72,7 @@ const renderButtton = (curPage, nunberOfRes, resPerPage) => {
     elements.searchPagButton.insertAdjacentHTML('afterbegin', button);
 }
 
+//show list of result 
 export const renderResults = (recipes, page = 2, pageRes = 10) => {
     //render result of current page 
     const start = (page - 1) * pageRes; 
