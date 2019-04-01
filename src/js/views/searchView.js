@@ -73,7 +73,7 @@ const renderButtton = (curPage, nunberOfRes, resPerPage) => {
 }
 
 //show list of result 
-export const renderResults = (recipes, page = 2, pageRes = 10) => {
+export const renderResults = (recipes, page = 1, pageRes = 10) => {
     //render result of current page 
     const start = (page - 1) * pageRes; 
     const end = page * pageRes;
